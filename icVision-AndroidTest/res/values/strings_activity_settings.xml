@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- Strings related to Settings -->
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- General settings -->
+    <string name="pref_header_general">General</string>
+	<string name="pref_title_something">Still Running Beta</string>
+    <string name="pref_description_something">by Juxi Leitner &lt;juxi.leitner@gmail.com&gt;</string>
+    
+<!--     <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array> -->
+    
+    <!-- Settings for Network -->
+    <string name="pref_header_network">Network</string>
+   
+    <string name="pref_YARP_title">YARP Network Settings</string>
+    <string name="pref_YARP_description">the IP:port of the YARP name server to search for the icVision Core</string>
+    
+    <string name="pref_title_YARP_IP">YARP IP Address</string>
+    <string name="pref_title_YARP_port">YARP Port</string>
+
+    <string name="pref_title_icVision_Core_IP">icVision Core IP Address</string>
+    <string name="pref_title_icVision_Core_port">icVision Core Port</string>
+    
+    <string name="pref_title_fallback_robotname">Fallback RobotName</string>
+    <string name="pref_fallback_robotname_description">in case no icVision Core is found we will try to connect to this robot</string>
+    
+    <string name="pref_networkinfo_title">Network Connection Information</string>
+    <string name="pref_title_network_ip">Current IP Address</string>
+    
+    
+    <!-- <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array> -->
+
+</resources>

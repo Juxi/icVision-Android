@@ -1,0 +1,69 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!--
+         A 'parent' preference, which enables/disables child preferences (below)
+         when checked/unchecked.
+    -->
+    <PreferenceCategory 
+        android:title="@string/pref_YARP_title"
+        android:key="pref_yarp_settings">
+	    <EditTextPreference
+	        android:defaultValue="192.168.27.203"
+	        android:key="yarp_ip"
+	        android:title="@string/pref_title_YARP_IP"
+	        android:capitalize="words"
+	        android:inputType="phone"
+	        android:maxLines="1"
+	        android:singleLine="true"	/>
+	     <!-- android:title="@string/pref_title_icVision_Core_IP"
+			android:title="@string/pref_title_icVision_Core_port"  -->
+		<EditTextPreference
+	        android:defaultValue="10000"
+	        android:key="yarp_port"
+	        android:title="@string/pref_title_YARP_port"
+	        android:capitalize="words"
+	        android:inputType="phone"
+	        android:maxLines="1"
+	        android:singleLine="true"	/>
+    
+	    <EditTextPreference
+		        android:defaultValue="10000"
+		        android:key="fallback_robotName"
+		        android:title="@string/pref_title_fallback_robotname"
+		        android:description="@string/pref_fallback_robotname_description"
+		        android:summary="@string/pref_fallback_robotname_description"
+		        android:capitalize="words"
+		        android:inputType="text"
+		        android:maxLines="1"
+		        android:singleLine="true"/>
+		</PreferenceCategory>
+	    	    
+    <PreferenceCategory 
+       android:title="@string/pref_networkinfo_title"
+       android:key="pref_networkinfo_settings">
+	    
+<!--         <CheckBoxPreference
+        android:key="pref_sync"
+        android:title="@string/pref_sync"
+        android:summary="@string/pref_sync_summ"
+        android:defaultValue="true" />
+ -->    
+ 		<EditTextPreference
+		        android:key="current_network_ip"
+		        android:title="@string/pref_title_network_ip"
+ 		        android:defaultValue="n/a"
+		        android:capitalize="words"
+		        android:inputType="text"
+		        android:maxLines="1"
+		        android:singleLine="true"
+		        android:enabled="false"/>
+	    
+	    </PreferenceCategory>
+    
+<!--     <CheckBoxPreference
+        android:defaultValue="true"
+        android:dependency="notifications_new_message"
+        android:key="notifications_new_message_vibrate"
+        android:title="@string/pref_title_vibrate" />
+ -->
+</PreferenceScreen>

@@ -1,0 +1,73 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkgray"
+    tools:context=".VisionGUI" >
+
+    <!--
+         The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc.
+    -->
+
+	<TextView
+	    android:id="@+id/txtLog"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="bottom|left"
+	    android:layout_marginBottom="20dp"
+	    android:layout_marginLeft="50dp"
+	    android:layout_marginRight="80dp"
+	    android:background="@color/darkgray"
+	    android:ems="10"
+	    android:enabled="false"
+	    android:inputType="none"
+	    android:linksClickable="false"
+	    android:maxHeight="400dp"
+	    android:scrollHorizontally="false"
+	    android:scrollbarAlwaysDrawVerticalTrack="false"
+	    android:selectAllOnFocus="false"
+	    android:singleLine="false"
+	    android:textColor="#5c5f62"
+	    android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="567dp"
+        android:layout_margin="120dp"
+        android:gravity="right"
+        android:keepScreenOn="true"
+        android:text="@string/icVision"
+        android:textColor="#8c8f92"
+        android:textSize="50sp" />
+    		
+    <!--
+         This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows.
+    -->
+
+    <ImageButton
+        android:id="@+id/ImageButtonSettings"
+        android:layout_width="102dp"
+        android:layout_height="92dp"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="10dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/core"
+        android:onClick="openSettings"
+        android:src="@android:drawable/ic_menu_preferences" />
+
+<!--     <ImageButton
+        android:id="@+id/imageButtonInfo"
+        android:layout_width="102dp"
+        android:layout_height="92dp"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/core"
+        android:onClick="openInfo"
+        android:src="@android:drawable/ic_menu_info_details" />
+ -->
+    
+</FrameLayout>

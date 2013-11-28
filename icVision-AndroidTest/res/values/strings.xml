@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">icVision Tablet GUI</string>
+    
+    <string name="btnLoad">Reload</string>
+    <string name="actionSettings">Settings</string>
+    <string name="actionRefresh">Refresh</string>
+    
+    <string name="core">icVisionCore</string>
+    <string name="icVision">icVision</string>
+    
+    <string name="info_success">Successfully connected!</string>
+    <string name="info_fail">Connection failed!</string>
+    <string name="info_no_network">No network available!</string>
+    <string name="info_connecting">Connecting to icVision core</string>
+
+    
+    <string name="title_module_list">icVision Modules</string>
+    <string name="title_module_detail">module Detail</string>
+
+</resources>
