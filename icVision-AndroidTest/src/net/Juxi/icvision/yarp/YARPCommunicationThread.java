@@ -23,7 +23,7 @@ import net.Juxi.icvision.test.updateUIThread;
 public class YARPCommunicationThread implements Runnable {
 
 	/**
-	 * A network socket to connect to the icVision core.
+	 * A network socket to connect to the YARP nameserver.
 	 */
 	protected Socket socket = null;
 	protected BufferedReader socketReader = null;
@@ -100,7 +100,7 @@ public class YARPCommunicationThread implements Runnable {
 			
 			// we are connected :)
 			isConnectedToYARPServer = true;
-			addToTextBox("\nYARP Server connected!");
+			addToTextBox("YARP Server connected!");
 			//Thread.sleep(100);
 			showDebugMessage(gui.getString(R.string.info_success));
 		} catch (Exception e) {
