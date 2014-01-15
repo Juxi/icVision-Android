@@ -21,7 +21,7 @@ public class icVisionCommThread extends YARPCommunicationThread {
 	};
 
 	private state s;
-	
+	private YARPPort icVisionPort;
 	private String robotName;
 
 	/**
@@ -38,11 +38,14 @@ public class icVisionCommThread extends YARPCommunicationThread {
 
 	@Override
 	protected boolean connect() {
-		if (connectToicVisionCore()) {
-			isConnectedToCore = true;
-		} else {
+		if (connectToYARPServer(false)) {
+			if (connectToicVisionCore()) {
+				isConnectedToCore = true;
+			} else {
+				isConnectedToCore = false;
+			}
+		} else
 			isConnectedToCore = false;
-		}
 
 		return isConnectedToCore;
 	}
@@ -59,10 +62,19 @@ public class icVisionCommThread extends YARPCommunicationThread {
 
 			Bottle b = sendRequest(new Bottle("query /icVision/rpc:i"));
 			addToTextBox("<recvd> " + b);
+			
+			// sanity check of reply
 			if (b.isEmpty()) {
 				addToTextBox("empty reply");
 				return false;
 			}
+			if (b.toString().startsWith("*** end")) {
+				showDebugMessage(gui.getString(R.string.info_fail));
+				addToTextBox("no icVision core found! start it up please :)");
+				return false;
+			}
+			
+			// parsing of reply
 			String ip = b.getElementAt(4);
 			int port = b.getElementAsInt(6);
 
@@ -78,7 +90,9 @@ public class icVisionCommThread extends YARPCommunicationThread {
 //			
 //			s = state.UPDATE_MODULES;
 		
+			showDebugMessage(gui.getString(R.string.info_success));
 		} catch (Exception e) {
+			showDebugMessage(gui.getString(R.string.info_fail));
 			addToTextBox("exception: " + e);
 			return false;
 		}

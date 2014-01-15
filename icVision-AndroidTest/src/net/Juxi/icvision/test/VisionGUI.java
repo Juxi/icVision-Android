@@ -145,8 +145,8 @@ public class VisionGUI extends Activity {
 	/**
 	 * YARPCommunicationThread
 	 */
-	// private YARPCommunicationThread yarp = null;
-	private icVisionCommunicationThread yarp = null;
+	//private YARPCommunicationThread yarp = null;
+	private icVisionCommThread yarp = null;
 
 	/** Called when the user clicks the Send button */
 	public void connectToCore() {
@@ -174,14 +174,15 @@ public class VisionGUI extends Activity {
 				toast.show();
 
 				// try to connect to the icVision core
-				yarp = new YARPCommunicationThread(network_ip, network_port, this);
+				//yarp = new YARPCommunicationThread(network_ip, network_port, this);
+				yarp = new icVisionCommThread(network_ip, network_port, this);
 				try {
 					new Thread(yarp).start();
 				} catch (Exception e) {
 					// addToTextBox("lala\n\n");
 					addToTextBox(e.toString());
 				}
-				
+
 				// need to give it time!
 				// the thread will let the user know .. hopefully :)
 				// // let the user know
@@ -192,9 +193,6 @@ public class VisionGUI extends Activity {
 				// toast = Toast.makeText(context, text, duration);
 				// toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 0);
 				// toast.show();
-				
-				icVision = new icVisionCommThread(network_ip, network_port, this);
-				
 
 			} else {
 				CharSequence text = getString(R.string.info_no_network);
@@ -207,7 +205,8 @@ public class VisionGUI extends Activity {
 
 	protected void addToTextBox(String msg) {
 		TextView text = (TextView) findViewById(R.id.txtLog);
-		if (!msg.endsWith("\n")) msg += "\n";
+		if (!msg.endsWith("\n"))
+			msg += "\n";
 		text.setFocusable(true);
 		text.setText(text.getText() + msg);
 

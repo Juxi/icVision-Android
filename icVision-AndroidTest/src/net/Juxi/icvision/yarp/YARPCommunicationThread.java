@@ -53,8 +53,16 @@ public class YARPCommunicationThread implements Runnable {
 	public void run() {
 		// showDebugMessage("in the run!");
 		if( connect() ) {
-			while (!Thread.currentThread().isInterrupted())
-				actionLoop();
+			try {
+				while (!Thread.currentThread().isInterrupted()) {
+					actionLoop();
+					Thread.sleep(1000);
+				}
+			}
+			catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+			}			
 		
 			isConnectedToYARPServer = false;
 			socket = null;
@@ -74,6 +82,10 @@ public class YARPCommunicationThread implements Runnable {
 	}
 
 	protected boolean connectToYARPServer() {
+		return connectToYARPServer(true);
+	}
+	
+	protected boolean connectToYARPServer(boolean showDebug) {
 		try {
 			InetAddress serverAddr = InetAddress.getByName(yarp_ip);
 			InetSocketAddress yarpAddr = new InetSocketAddress(serverAddr, yarp_port);
@@ -102,7 +114,8 @@ public class YARPCommunicationThread implements Runnable {
 			isConnectedToYARPServer = true;
 			addToTextBox("YARP Server connected!");
 			//Thread.sleep(100);
-			showDebugMessage(gui.getString(R.string.info_success));
+			if(showDebug)
+				showDebugMessage(gui.getString(R.string.info_success));
 		} catch (Exception e) {
 			isConnectedToYARPServer = false;
 			socket = null;
@@ -182,7 +195,8 @@ public class YARPCommunicationThread implements Runnable {
 	}
 
 	protected void actionLoop() {
-		showDebugMessage("test");
+			// showDebugMessage("test");
+			// keep YARP port alive
 	}
 
 }
