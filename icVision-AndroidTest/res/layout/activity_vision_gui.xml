@@ -29,7 +29,7 @@
 	    android:scrollbarAlwaysDrawVerticalTrack="false"
 	    android:selectAllOnFocus="false"
 	    android:singleLine="false"
-	    android:textColor="#5c5f62"
+	    android:textColor="@color/white"
 	    android:textSize="10sp" />
 
     <TextView
