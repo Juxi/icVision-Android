@@ -34,6 +34,7 @@ public class YARPCommunicationThread implements Runnable {
 	protected VisionGUI gui;
 	
 	public static int TIMEOUT = 4000;
+	private static int ACTIONLOOPINTERVAL = 2000;
 
 	/**
 	 * The flag to indicate whether the app is connected to the yarp name server or
@@ -56,7 +57,7 @@ public class YARPCommunicationThread implements Runnable {
 			try {
 				while (!Thread.currentThread().isInterrupted()) {
 					actionLoop();
-					Thread.sleep(1000);
+					Thread.sleep(ACTIONLOOPINTERVAL);
 				}
 			}
 			catch (InterruptedException e) {

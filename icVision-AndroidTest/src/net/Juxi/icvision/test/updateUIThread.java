@@ -1,5 +1,4 @@
 package net.Juxi.icvision.test;
-import android.widget.TextView;
 
 public class updateUIThread implements Runnable {
 	private String msg;
@@ -8,12 +7,28 @@ public class updateUIThread implements Runnable {
 	
 	public static final int DEBUG = 1;
 	public static final int TEXT  = 2;
+	public static final int ROBOTUPDATE  = 3;
 	
-	public updateUIThread(VisionGUI gui, int type, String str) { this.gui = gui; this.msg = str; this.type = type;}
+	public updateUIThread(VisionGUI gui, int type) { 
+		this.gui = gui; this.msg = ""; this.type = type;
+	}
+
+	public updateUIThread(VisionGUI gui, int type, String str) { 
+		this.gui = gui; this.msg = str; this.type = type;
+	}
 	
 	@Override
 	public void run() {
-		if(type == DEBUG) gui.showDebugMessage(msg);
-		if(type == TEXT)  gui.addToTextBox(msg + "\n");
+		switch(type) {
+			case DEBUG:
+				gui.showDebugMessage(msg);
+				break;
+			case TEXT:
+				gui.addToTextBox(msg + "\n");
+				break;
+			case ROBOTUPDATE:
+				gui.onRobotUpdate();
+				break;
+		}
 	}
 }

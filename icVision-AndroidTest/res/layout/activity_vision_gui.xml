@@ -59,15 +59,27 @@
         android:onClick="openSettings"
         android:src="@android:drawable/ic_menu_preferences" />
 
-<!--     <ImageButton
-        android:id="@+id/imageButtonInfo"
-        android:layout_width="102dp"
-        android:layout_height="92dp"
-        android:layout_gravity="bottom|left"
+   <ImageButton
+        android:id="@+id/btnRobot"
+        android:layout_width="166dp"
+        android:layout_height="166dp"
+        android:layout_gravity="center|center"
         android:layout_margin="10dp"
-        android:contentDescription="@string/core"
-        android:onClick="openInfo"
-        android:src="@android:drawable/ic_menu_info_details" />
- -->
-    
+        android:background="@color/darkgray"
+        android:contentDescription="@string/core" />
+   
+   <TextView
+       android:id="@+id/txtRobotButton"
+       android:layout_width="166dp"
+       android:layout_height="16dp"
+       android:layout_gravity="center|center"
+       android:gravity="center"
+       android:layout_marginTop="86dp"
+       android:background="@color/darkgray"
+       android:ems="10"
+       android:enabled="false"
+       android:singleLine="true"
+       android:textColor="@color/white"
+       android:textSize="14sp" />
+     
 </FrameLayout>

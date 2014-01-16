@@ -61,6 +61,7 @@ public class icVisionCommThread extends YARPCommunicationThread {
 			// addToTextBox("> " + s);
 
 			Bottle b = sendRequest(new Bottle("query /icVision/rpc:i"));
+			//Bottle b = yarp.send(new Bottle("query /icVision/rpc:i"));
 			addToTextBox("<recvd> " + b);
 			
 			// sanity check of reply
@@ -81,29 +82,60 @@ public class icVisionCommThread extends YARPCommunicationThread {
 			addToTextBox("icVision RPC found @" + ip + ":" + port);
 			
 			icVisionPort = new YARPPort(ip, port);
-//			
-//			// do something with the list reply!
-//			// addToTextBox("<recvd> " + icVisionPort.send(new Bottle("conf")));
-//			
-//			// TODO get robot name from conf
-//			robotName = "icub";
-//			
-//			s = state.UPDATE_MODULES;
+
+			b = icVisionPort.send(new Bottle("conf"));
+			if(! b.isEmpty()) {
+				// get robot name from conf
+				// robotName = "icub"; 
+				// is there more in the conf? no not yet..
+				
+				robotName = b.toString();
+				addToTextBox("Robot found: " + b);
+
+				// update the robot info in the gui (mainly name and show button)
+				gui.updateUIHandler.post(new updateUIThread(gui, updateUIThread.ROBOTUPDATE));
+			}
+			
+			//	s = state.UPDATE_MODULES;
+			update_icVisionFilterList();
 		
 			showDebugMessage(gui.getString(R.string.info_success));
 		} catch (Exception e) {
 			showDebugMessage(gui.getString(R.string.info_fail));
-			addToTextBox("exception: " + e);
+			addToTextBox("connection exception: " + e);
 			return false;
 		}
 		return true;
 	}
 
+	private boolean update_icVisionFilterList() {
+		try {		
+			Bottle b = icVisionPort.send(new Bottle("list"));
+			addToTextBox("<recvd> " + b);
+	
+			if(! b.isEmpty()) {
+				// TODO keep track of the objects in the list
+	
+			}
+
+		}catch(Exception e) {
+			showDebugMessage(gui.getString(R.string.info_fail));
+			addToTextBox("exception: " + e);
+			return false;			
+		}
+		return true;
+	}
+
+	
+	public String getRobotName() {
+		return robotName;
+	}
+	
 	@Override
 	protected void actionLoop() {
 //		if(s == state.IDLE) return;
 		
-		addToTextBox("in the action loop of icVisionComm\n\n");
+		// addToTextBox("in the action loop of icVisionComm\n\n");
 		
 //		if(s == state.UPDATE_MODULES)
 //			update_icVisionFilterList();
@@ -119,6 +151,4 @@ public class icVisionCommThread extends YARPCommunicationThread {
 
 	}
 	
-	private void update_icVisionFilterList() {
-	}
 }
